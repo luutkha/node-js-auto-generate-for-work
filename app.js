@@ -36,7 +36,6 @@ async function walk(dir) {
 async function getComponentName(path) {
   try {
     const data = await fs.readFile(path, { encoding: 'utf8' });
-    const KEY_WORD_FOR_FILTER = 'export default '
     const regex = /(?<=export default ).*(?=[;*])/g
     const finalData = data.split('\r').map(text => text.match(regex)).filter(e => e !== null);
     return _.flatMapDeep(finalData)[0]
